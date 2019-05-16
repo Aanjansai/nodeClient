@@ -7,7 +7,7 @@ stages:
   - Build image and push
 
 docker build:
-  stage: Build image
+  stage: Build image and push
   script:
   - docker build -t aanjan1112/nodejs-frontend-client/client01:v1 .
   - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
