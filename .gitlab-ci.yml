@@ -1,0 +1,19 @@
+image: docker:stable
+
+stages:
+  - Build image
+  - Push to Docker Hub
+
+docker build:
+  stage: Build image
+  script:
+  - docker build -t aanjan1112/nodejs-frontend-client/client01:v1 .
+
+docker push:
+  stage: Push to Docker Hub
+  only:
+  - master
+  script:
+  - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
+  - docker push aanjan1112/nodejs-frontend-client/client01:v1
+
