@@ -12,4 +12,4 @@ docker build:
   - docker build -t aanjan1112/nodejs-frontend-client:v1 .
   - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
   - docker push aanjan1112/nodejs-frontend-client:v1
- 
+  - echo "*************job done***********"
