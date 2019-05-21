@@ -1,19 +1,33 @@
 image: docker:stable
 
+services:
+- docker:dind
+
 stages:
-  - Build image
-  - Push to Docker Hub
-
+  - Build image and push
+  - Code quality test
 docker build:
-  stage: Build image
+  stage: Build image and push
   script:
-  - docker build -t aanjan1112/nodejs-frontend-client/client01:v1 .
-
-docker push:
-  stage: Push to Docker Hub
-  only:
-  - master
-  script:
+  - docker build -t aanjan1112/nodejs-frontend-client:v1 .
   - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
-  - docker push aanjan1112/nodejs-frontend-client/client01:v1
+  - docker push aanjan1112/nodejs-frontend-client:v1
+
+code_quality:
+  stage: Code quality test
+  image: docker:stable
+  variables:
+    DOCKER_DRIVER: overlay2
+  allow_failure: true
+  services:
+    - docker:stable-dind
+  script:
+    - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
+    - docker run
+        --env SOURCE_CODE="$PWD"
+        --volume "$PWD":/code
+        --volume /var/run/docker.sock:/var/run/docker.sock
+        "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
+  artifacts:
+      paths: [gl-code-quality-report.json]
 
