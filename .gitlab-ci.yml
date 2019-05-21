@@ -2,19 +2,15 @@ image: docker:stable
 
 services:
 - docker:dind
-<<<<<<< HEAD
-=======
 
 stages:
   - Build image and push
->>>>>>> bf8dda68c85865cf12d6571399f5a6f1e6efa2a2
-
+  - Code quality test
 stages:
   - Build image and push
   - Code quality test
 docker build:
   stage: Build image and push
-<<<<<<< HEAD
   script:
   - docker build -t aanjan1112/nodejs-frontend-client:v1 .
   - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
@@ -38,10 +34,5 @@ code_quality:
   artifacts:
       paths: [gl-code-quality-report.json]
 
-=======
-  script:
-  - docker build -t aanjan1112/nodejs-frontend-client:v1 .
-  - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
-  - docker push aanjan1112/nodejs-frontend-client:v1
-  - echo "*************job done***********"
->>>>>>> bf8dda68c85865cf12d6571399f5a6f1e6efa2a2
+
+
