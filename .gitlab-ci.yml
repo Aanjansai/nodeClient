@@ -7,10 +7,6 @@ stages:
   - Build image and push
   - Code quality test
 
-stages:
-  - Build image and push
-  - Code quality test
-
 docker build:
   stage: Build image and push
   script:
