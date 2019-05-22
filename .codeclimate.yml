@@ -46,9 +46,9 @@ languages:
    Python: true
    PHP: true
 
-plugins:
+engines::
  rubocop:
-    enabled: true
+    enabled: false
   coffeelint:
     enabled: true
   eslint:
