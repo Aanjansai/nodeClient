@@ -6,6 +6,7 @@ services:
 stages:
   - Build image and push
   - Code quality test
+  - Test
 
 docker build:
   stage: Build image and push
@@ -27,5 +28,16 @@ codequality:
     - docker run --env CODECLIMATE_CODE="$PWD" --volume "$PWD":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate:0.69.0 analyze -f json > codeclimate.json || true
   artifacts:
     paths: [codeclimate.json]
+    
+lint:sonar:
+  stage: Test
+  image: aanjan1112/nodejs-frontend-client:v1
+  script:
+  - npm install -g sonarqube-scanner
+  - sonar-scanner \
+    -Dsonar.projectKey=admin \
+    -Dsonar.sources=. \
+    -Dsonar.host.url=http://localhost:9000 \
+    -Dsonar.login=87023ea29c09c7310d17bdc3e837609b82c5e7bc
 
 
