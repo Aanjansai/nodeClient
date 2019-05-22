@@ -3,13 +3,10 @@ image: docker:stable
 services:
 - docker:dind
 
-<<<<<<< HEAD
-
-=======
 stages:
   - Build image and push
   - Code quality test
->>>>>>> a3731b1468ee505e7f63e13c1105cd92ad94d83b
+
 stages:
   - Build image and push
   - Code quality test
