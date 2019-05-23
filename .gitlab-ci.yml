@@ -36,7 +36,6 @@ sonarTest:
   - npm install -g sonarqube-scanner
   - sonar-scanner \
     -Dsonar.projectKey=admin \
-    -Dsonar.sources=. \
     -Dsonar.host.url=http://localhost:9000 \
     -Dsonar.login=87023ea29c09c7310d17bdc3e837609b82c5e7bc
 
