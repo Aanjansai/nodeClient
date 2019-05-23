@@ -33,7 +33,7 @@ stages:
 - analysis
 
 sonarqube:
-  stage: analysis
+  stage: Test
   image: ciricihq/gitlab-sonar-scanner
   variables:
     SONAR_URL: http://localhost:9000 
