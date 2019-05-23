@@ -12,6 +12,10 @@ RUN apk add --update \
     py-pip \
     build-base 
 
+RUN apk fetch openjdk8
+RUN apk add openjdk8
+RUN apk update
+
 RUN npm install bcrypt --save
 RUN npm rebuild
 RUN npm install
@@ -22,4 +26,3 @@ COPY . /srv/app/node-client
 
 CMD ["npm", "start"]
 
- 

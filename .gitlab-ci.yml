@@ -3,16 +3,10 @@ image: docker:stable
 services:
 - docker:dind
 
-<<<<<<< HEAD
-
-=======
 stages:
   - Build image and push
   - Code quality test
->>>>>>> a3731b1468ee505e7f63e13c1105cd92ad94d83b
-stages:
-  - Build image and push
-  - Code quality test
+  - Test
 
 docker build:
   stage: Build image and push
@@ -35,4 +29,13 @@ codequality:
   artifacts:
     paths: [codeclimate.json]
 
-
+lint:sonar:
+  stage: Test
+  image: aanjan1112/nodejs-frontend-client:v1
+  script:
+  - npm install -g sonarqube-scanner
+  - sonar-scanner \
+    -Dsonar.projectKey=admin \
+    -Dsonar.sources=. \
+    -Dsonar.host.url=http://localhost:9000 \
+    -Dsonar.login=87023ea29c09c7310d17bdc3e837609b82c5e7bc
