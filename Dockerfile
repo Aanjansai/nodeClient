@@ -10,7 +10,11 @@ RUN apk add --update \
     python \
     python-dev \
     py-pip \
-    build-base 
+    build-base
+    
+RUN apk fetch openjdk8
+RUN apk add openjdk8
+RUN apk update
 
 RUN npm install bcrypt --save
 RUN npm rebuild
