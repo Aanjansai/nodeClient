@@ -29,9 +29,6 @@ codequality:
   artifacts:
     paths: [codeclimate.json]
     
-stages:
-- analysis
-
 sonarqube:
   stage: Test
   image: ciricihq/gitlab-sonar-scanner
