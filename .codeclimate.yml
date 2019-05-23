@@ -41,14 +41,14 @@ checks:
     config:
       threshold: #language-specific defaults. overrides affect all languages.
 languages:
-   Ruby: false
-   JavaScript: true
-   Python: true
-   PHP: true
+  Ruby: false
+  JavaScript: true
+  Python: true
+  PHP: true
 
-plugins:
- rubocop:
-    enabled: true
+engines:
+  rubocop:
+    enabled: false
   coffeelint:
     enabled: true
   eslint:

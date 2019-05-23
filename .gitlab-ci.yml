@@ -28,6 +28,15 @@ codequality:
     - docker run --env CODECLIMATE_CODE="$PWD" --volume "$PWD":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate:0.69.0 analyze -f json > codeclimate.json || true
   artifacts:
     paths: [codeclimate.json]
+    
+sonarqube:
+  stage: Test
+  image: ciricihq/gitlab-sonar-scanner
+  variables:
+    SONAR_URL: http://localhost:9000 
+    SONAR_ANALYSIS_MODE: issues
+  script:
+  - gitlab-sonar-scanner
 
 lint:sonar:
   stage: Test
