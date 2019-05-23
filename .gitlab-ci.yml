@@ -29,15 +29,16 @@ codequality:
   artifacts:
     paths: [codeclimate.json]
     
-sonarTest:
-  stage: Test
-  image: jramcast/gitlab-ci-sonarqube
+stages:
+- analysis
+
+sonarqube:
+  stage: analysis
+  image: ciricihq/gitlab-sonar-scanner
+  variables:
+    SONAR_URL: http://localhost:9000 
+    SONAR_ANALYSIS_MODE: issues
   script:
-  - npm install -g sonarqube-scanner
-  - sonar-scanner \
-    -Dsonar.projectKey=admin \
-    -Dsonar.sources=. \ 
-    -Dsonar.host.url=http://localhost:9000 \
-    -Dsonar.login=87023ea29c09c7310d17bdc3e837609b82c5e7bc
+  - gitlab-sonar-scanner
 
 
