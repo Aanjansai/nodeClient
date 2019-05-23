@@ -29,9 +29,9 @@ codequality:
   artifacts:
     paths: [codeclimate.json]
     
-lint:sonar:
+sonarTest:
   stage: Test
-  image: aanjan1112/nodejs-frontend-client:v1
+  image: jramcast/gitlab-ci-sonarqube
   script:
   - npm install -g sonarqube-scanner
   - sonar-scanner \
