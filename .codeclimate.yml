@@ -48,7 +48,7 @@ languages:
 
 plugins:
   rubocop:
-    enabled: false
+    enabled: true
   coffeelint:
     enabled: true
   eslint:
