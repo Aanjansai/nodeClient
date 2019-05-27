@@ -1,11 +1,11 @@
 version: "2"
 checks:
   argument-count:
-    enabled: true
+    enabled: false
     config:
       threshold: 4
   complex-logic:
-    enabled: true
+    enabled: false
     config:
       threshold: 4
   file-lines:
@@ -13,7 +13,7 @@ checks:
     config:
       threshold: 250
   method-complexity:
-    enabled: true
+    enabled: false
     config:
       threshold: 5
   method-count:
