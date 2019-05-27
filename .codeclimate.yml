@@ -48,11 +48,11 @@ languages:
 
 plugins:
   rubocop:
-    enabled: true
+    enabled: false
   coffeelint:
-    enabled: true
+    enabled: false
   eslint:
-    enabled: true
+    enabled: false
   csslint:
     enabled: true
 
