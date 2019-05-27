@@ -5,7 +5,7 @@ checks:
     config:
       threshold: 4
   complex-logic:
-    enabled: false
+    enabled: true
     config:
       threshold: 4
   file-lines:
@@ -13,7 +13,7 @@ checks:
     config:
       threshold: 250
   method-complexity:
-    enabled: false
+    enabled: true
     config:
       threshold: 5
   method-count:
@@ -37,7 +37,7 @@ checks:
     config:
       threshold: #language-specific defaults. overrides affect all languages.
   identical-code:
-    enabled: true
+    enabled: false
     config:
       threshold: #language-specific defaults. overrides affect all languages.
 languages:
