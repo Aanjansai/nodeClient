@@ -37,7 +37,7 @@ checks:
     config:
       threshold: #language-specific defaults. overrides affect all languages.
   identical-code:
-    enabled: false
+    enabled: true
     config:
       threshold: #language-specific defaults. overrides affect all languages.
 languages:
